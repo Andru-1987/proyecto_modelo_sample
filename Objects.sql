@@ -45,7 +45,7 @@ ORDER BY
 
 -- Funcion 1
 
-DROP FUNCTION IF EXISTS Get_Total_Spending
+DROP FUNCTION IF EXISTS Get_Total_Spending;
 
 DELIMITER //
 CREATE FUNCTION Get_Total_Spending( p_ID_Player INT )
@@ -171,22 +171,25 @@ DELIMITER ;
 
 -- Trigger 2
 
-DROP TRIGGER IF EXISTS Validate_Item_Duplication;
+DROP TRIGGER IF EXISTS Validate_Payment_Method;
 
 DELIMITER //
-CREATE TRIGGER Validate_Item_Duplication
+CREATE TRIGGER Validate_Payment_Method
 BEFORE INSERT ON Financial_Transactions
 FOR EACH ROW
 BEGIN
-    DECLARE item_exists INT;
+    DECLARE valid_method INT;
 
-    SELECT COUNT(*) INTO item_exists -- Verificar si el ítem ya existe en el inventario del jugador
-    FROM Virtual_Items
-    WHERE ID_Player = NEW.ID_Player
-      AND Item_Name = NEW.Item_Name;
+    -- Verificar si el método de pago es uno de los permitidos
+    SELECT COUNT(*) INTO valid_method
+    FROM (SELECT 'Credit Card' AS Method
+          UNION ALL SELECT 'PayPal'
+          UNION ALL SELECT 'Bank Transfer') AS AllowedMethods
+    WHERE Method = NEW.Payment_Method;
 
-    IF item_exists > 0 THEN -- Si el ítem ya existe, lanzar un error
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El jugador ya posee este ítem y no puede comprarlo nuevamente.';
+    -- Si el método de pago no es válido, lanzar un error
+    IF valid_method = 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'El método de pago no es válido.';
     END IF;
 END //
 DELIMITER ;
