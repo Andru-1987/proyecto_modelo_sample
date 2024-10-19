@@ -1,0 +1,36 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+
+  db:
+    image: mysql
+    restart: always
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: coderhouse
+    ports:
+      - 3306:3306
+    volumes:
+      - ../sql_code:/sql_code
+  
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+
+## se deben parar en la carpeta extras 
+# docker compose up --d --build
+
+# ingreasr a la docker container 
+# docker exec -it mysql bash
+
+
+# -----
+# docker exec -it mysql mysql -u root -p 
+
+#  correr dentro del mysql de terminal
+# mysql> source /sql_code/1.BaseCode.sql
+

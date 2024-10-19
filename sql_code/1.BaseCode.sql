@@ -51,7 +51,7 @@ CREATE TABLE Achiev_Player (
 );
 
 -- Crear la tabla Support_and_Customer_Service
-CREATE TABLE Support_and_Customer_Service (
+CREATE TABLE Support_And_Customer_Service (
     ID_ticket INT PRIMARY KEY AUTO_INCREMENT,
     ID_player INT,
     creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,

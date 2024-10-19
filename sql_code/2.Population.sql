@@ -11,7 +11,7 @@ TRUNCATE TABLE Virtual_Items;
 TRUNCATE TABLE Achievements;
 TRUNCATE TABLE Financial_Transactions;
 TRUNCATE TABLE Achiev_Player;
-TRUNCATE TABLE Support_And_Customer_Service;
+TRUNCATE TABLE Support_and_Customer_Service;
 
 SET FOREIGN_KEY_CHECKS = 1;  -- Volver a habilitar la comprobación de claves foráneas
 
