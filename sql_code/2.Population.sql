@@ -1,6 +1,6 @@
 -- Population
 
-use first_task;
+USE first_task;
 
 -- Drop all database tables data
 
@@ -92,7 +92,7 @@ VALUES
 
 
 -- Insertar 10 registros en la tabla Support and Customer Service
-INSERT INTO Support_And_Customer_Service (ID_Ticket, ID_Player, Creation_Date, Problem_Category, Problem_Description, Priority, Ticket_Status, Support_Agent_ID, Last_Updated_Date)
+INSERT INTO Support_and_Customer_Service (ID_Ticket, ID_Player, Creation_Date, Problem_Category, Problem_Description, Priority, Ticket_Status, Support_Agent_ID, Last_Updated_Date)
 VALUES 
 (1, 1, '2023-09-17 08:30:00', 'Technical Issue', 'Cannot log into my account', 'High', 'Open', 101, '2023-09-17 09:00:00'),
 (2, 2, '2023-09-18 10:45:00', 'Payment Issue', 'Transaction not showing up', 'Medium', 'In Progress', 102, '2023-09-18 11:00:00'),

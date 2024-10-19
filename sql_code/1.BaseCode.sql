@@ -1,6 +1,6 @@
 DROP DATABASE IF EXISTS first_task;
 CREATE DATABASE first_task;
-use first_task;
+USE first_task;
 
 -- Crear la tabla Players
 CREATE TABLE Players (

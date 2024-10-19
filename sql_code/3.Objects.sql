@@ -1,6 +1,6 @@
 -- Objects creation
 
-use first_task;
+USE first_task;
 
 -- Vista 1
 
